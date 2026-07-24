@@ -18,7 +18,7 @@ async function runCode() {
 
         const response = await fetch(
 
-            "http://127.0.0.1:8000/run",
+            "http://725-compiler-assist-production.up.railway.app/run",
 
             {
 
@@ -48,7 +48,6 @@ async function runCode() {
 
 
 
-        // Show output or error
 
         if (result.stderr && result.stderr.trim() !== "") {
 
@@ -58,12 +57,10 @@ async function runCode() {
 
 
 
-            // Ask assistant to explain error
-
             const errorResponse =
                 await fetch(
 
-                    "http://127.0.0.1:8000/explain_error",
+                    "http://725-compiler-assist-production.up.railway.app/explain_error",
 
                     {
 

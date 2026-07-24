@@ -65,7 +65,7 @@ sendChat.addEventListener(
 
 
             const response = await fetch(
-                "http://127.0.0.1:8000/assistant",
+                "http://725-compiler-assist-production.up.railway.app/assistant",
                 {
 
                     method: "POST",
@@ -160,7 +160,7 @@ async function analyzeCode() {
 
         const response = await fetch(
 
-            "http://127.0.0.1:8000/analyze",
+            "http://725-compiler-assist-production.up.railway.app/analyze",
 
             {
 
