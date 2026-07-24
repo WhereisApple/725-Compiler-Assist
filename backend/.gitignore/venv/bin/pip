@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/home/sumeet725/Desktop/Hershey/Random projects/Compiler/backend/venv/bin/python3" "$0" "$@"
+'''exec' "/home/sumeet725/Desktop/Hershey/Random projects/Compiler/venv/bin/python3" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re
