@@ -18,7 +18,7 @@ async function runCode() {
 
         const response = await fetch(
 
-            "http://725-compiler-assist-production.up.railway.app/run",
+            "https://725-compiler-assist-production.up.railway.app/run",
 
             {
 
@@ -60,7 +60,7 @@ async function runCode() {
             const errorResponse =
                 await fetch(
 
-                    "http://725-compiler-assist-production.up.railway.app/explain_error",
+                    "https://725-compiler-assist-production.up.railway.app/explain_error",
 
                     {
 

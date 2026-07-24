@@ -12,8 +12,6 @@ function analyzeLiveCode() {
     if (language === "python") {
 
 
-        // Missing closing brackets
-
         const opens =
             (code.match(/[\(\[\{]/g) || []).length;
 
@@ -30,9 +28,6 @@ function analyzeLiveCode() {
 
         }
 
-
-
-        // Missing colon
 
         const lines =
             code.split("\n");
@@ -60,8 +55,6 @@ function analyzeLiveCode() {
         });
 
 
-
-        // Empty code
 
         if (code.trim() === "") {
 
