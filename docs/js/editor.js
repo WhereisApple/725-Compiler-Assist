@@ -60,11 +60,7 @@ function initEditor() {
 
     require([
 
-        "vs/editor/editor.main",
-
-        "vs/basic-languages/python/python",
-
-        "vs/basic-languages/cpp/cpp"
+        "vs/editor/editor.main"
 
     ], function () {
 
@@ -76,21 +72,15 @@ function initEditor() {
 
             {
 
-
                 value: templates.python,
-
 
                 language: languageMap.python,
 
-
                 theme: "vs-dark",
-
 
                 automaticLayout: true,
 
-
                 fontSize: 15,
-
 
                 minimap: {
 
@@ -98,23 +88,17 @@ function initEditor() {
 
                 },
 
-
                 scrollBeyondLastLine: false,
-
 
                 roundedSelection: true,
 
-
                 wordWrap: "on",
 
-
                 tabSize: 4
-
 
             }
 
         );
-
 
 
 
