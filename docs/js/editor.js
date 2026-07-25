@@ -29,8 +29,7 @@ function initEditor() {
     });
 
     require([
-        "vs/editor/editor.main",
-        "vs/basic-languages/loader"
+        "vs/editor/editor.main"
     ], function () {
         editor = monaco.editor.create(document.getElementById("editor"), {
             value: templates.python,
