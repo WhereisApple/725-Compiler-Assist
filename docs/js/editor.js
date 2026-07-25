@@ -15,43 +15,12 @@ int main()
 };
 
 
-self.MonacoEnvironment = {
-
-    getWorkerUrl: function () {
-
-        return URL.createObjectURL(
-
-            new Blob([`
-
-                self.MonacoEnvironment = {
-                    baseUrl: "https://unpkg.com/monaco-editor@0.52.2/min/"
-                };
-
-                importScripts("https://unpkg.com/monaco-editor@0.52.2/min/vs/base/worker/workerMain.js");
-
-            `], {
-
-                type: "text/javascript"
-
-            })
-
-        );
-
-    }
-
-};
-
-
 function initEditor() {
 
     require.config({
-
         paths: {
-
-            vs: "https://unpkg.com/monaco-editor@0.52.2/min/vs"
-
+            vs: "monaco/vs"
         }
-
     });
 
 
