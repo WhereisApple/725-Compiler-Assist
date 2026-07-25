@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from compiler import run_python, run_c
+from compiler import run_python_code, run_c_code
 from assistant import generate_response
 from analyzer import explain_error
 
@@ -20,6 +20,7 @@ app.add_middleware(
 
 @app.get("/")
 def home():
+
     return {
         "message": "725 Compiler Assist Backend is Running 🚀"
     }
@@ -32,12 +33,15 @@ async def run(data: dict):
     code = data.get("code", "")
 
     if language == "python":
-        result = run_python(code)
+
+        result = run_python_code(code)
 
     elif language == "c":
-        result = run_c(code)
+
+        result = run_c_code(code)
 
     else:
+
         return {
             "stdout": "",
             "stderr": "Language not supported yet.",
@@ -69,21 +73,6 @@ async def assistant(data: dict):
     }
 
 
-@app.post("/explain_error")
-async def explain(data: dict):
-
-    error = data.get("error", "")
-    language = data.get("language", "")
-
-    explanation = explain_error(
-        error,
-        language
-    )
-
-    return {
-        "explanation": explanation
-    }
-
 @app.post("/analyze")
 async def analyze(data: dict):
 
@@ -102,22 +91,17 @@ async def analyze(data: dict):
         "analysis": answer
     }
 
-from analyzer import explain_error
-
 
 @app.post("/explain_error")
 async def explain(data: dict):
 
     error = data.get("error", "")
-
     language = data.get("language", "python")
-
 
     result = explain_error(
         error,
         language
     )
-
 
     return {
         "answer": result

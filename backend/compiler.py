@@ -1,31 +1,21 @@
-from docker_executor import run_in_docker
+from docker_executor import run_python, run_c
+from local_executor import run_python_local, run_c_local
+from docker_check import docker_available
 
 
-def run_python(code):
+def run_python_code(code):
 
-    return run_in_docker(
+    if docker_available():
 
-        "python:3.12",
+        return run_python(code)
 
-        "python /code/{filename}",
-
-        code,
-
-        ".py"
-
-    )
+    return run_python_local(code)
 
 
-def run_c(code):
+def run_c_code(code):
 
-    return run_in_docker(
+    if docker_available():
 
-        "gcc:latest",
+        return run_c(code)
 
-        "gcc /code/{filename} -o /code/program && /code/program",
-
-        code,
-
-        ".c"
-
-    )
+    return run_c_local(code)
