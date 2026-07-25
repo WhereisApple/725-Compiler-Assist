@@ -5,31 +5,26 @@ def analyze_python(code):
 
     suggestions = []
 
-    # Missing comments
     if "#" not in code:
         suggestions.append(
             "Consider adding comments to improve readability."
         )
 
-    # Poor variable names
     if re.search(r"\b[a-zA-Z]\b", code):
         suggestions.append(
             "Use more descriptive variable names instead of single letters."
         )
 
-    # Tabs
     if "\t" in code:
         suggestions.append(
             "Use four spaces instead of tabs for indentation."
         )
 
-    # range(len())
     if "range(len(" in code:
         suggestions.append(
             "Consider iterating directly over the list instead of using range(len())."
         )
 
-    # print debugging
     if code.count("print(") > 5:
         suggestions.append(
             "There are many print statements. Remove debugging prints before finalizing."

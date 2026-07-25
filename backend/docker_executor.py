@@ -11,10 +11,7 @@ def run_in_docker(image, command, code, extension):
 
             filename = "main" + extension
 
-            file_path = os.path.join(
-                temp_dir,
-                filename
-            )
+            file_path = os.path.join(temp_dir, filename)
 
             with open(
                 file_path,
@@ -24,33 +21,25 @@ def run_in_docker(image, command, code, extension):
 
                 file.write(code)
 
-
             result = subprocess.run(
 
                 [
                     "docker",
                     "run",
                     "--rm",
-
                     "-v",
                     f"{temp_dir}:/code",
-
                     image,
-
                     "sh",
                     "-c",
                     command.format(filename=filename)
-
                 ],
 
                 capture_output=True,
-
                 text=True,
-
                 timeout=60
 
             )
-
 
             return {
 
@@ -59,7 +48,6 @@ def run_in_docker(image, command, code, extension):
                 "stderr": result.stderr
 
             }
-
 
     except subprocess.TimeoutExpired:
 
@@ -71,7 +59,6 @@ def run_in_docker(image, command, code, extension):
 
         }
 
-
     except Exception as e:
 
         return {
@@ -81,3 +68,33 @@ def run_in_docker(image, command, code, extension):
             "stderr": str(e)
 
         }
+
+
+def run_python(code):
+
+    return run_in_docker(
+
+        image="python:3.12",
+
+        command="python /code/{filename}",
+
+        code=code,
+
+        extension=".py"
+
+    )
+
+
+def run_c(code):
+
+    return run_in_docker(
+
+        image="gcc:latest",
+
+        command="gcc /code/{filename} -o /code/program && /code/program",
+
+        code=code,
+
+        extension=".c"
+
+    )
