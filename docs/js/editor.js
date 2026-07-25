@@ -57,11 +57,24 @@ function initEditor() {
 
         "vs/editor/editor.main",
 
-        "vs/basic-languages/python/python.contribution",
-
-        "vs/basic-languages/cpp/cpp.contribution"
+        "vs/basic-languages/loader"
 
     ], function () {
+
+
+
+        // Load Python language support
+        require([
+            "vs/basic-languages/python/python"
+        ], function () { });
+
+
+
+        // Load C/C++ language support
+        require([
+            "vs/basic-languages/cpp/cpp"
+        ], function () { });
+
 
 
 
@@ -71,21 +84,15 @@ function initEditor() {
 
             {
 
-
                 value: templates.python,
-
 
                 language: languageMap.python,
 
-
                 theme: "vs-dark",
-
 
                 automaticLayout: true,
 
-
                 fontSize: 15,
-
 
                 minimap: {
 
@@ -93,18 +100,13 @@ function initEditor() {
 
                 },
 
-
                 scrollBeyondLastLine: false,
-
 
                 roundedSelection: true,
 
-
                 wordWrap: "on",
 
-
                 tabSize: 4
-
 
             }
 
@@ -130,6 +132,7 @@ function initEditor() {
 
 
 }
+
 
 
 
@@ -187,6 +190,7 @@ function changeLanguage(language) {
 
 
 
+
 function getCode() {
 
 
@@ -197,6 +201,7 @@ function getCode() {
 
 
 }
+
 
 
 
