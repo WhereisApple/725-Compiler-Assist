@@ -17,7 +17,6 @@ int main()
 
 
 
-// Monaco worker configuration
 self.MonacoEnvironment = {
 
     getWorkerUrl: function () {
@@ -30,7 +29,6 @@ self.MonacoEnvironment = {
 
 
 
-// Monaco language mapping
 const languageMap = {
 
     python: "python",
@@ -60,7 +58,7 @@ function initEditor() {
 
     require([
 
-        "vs/editor/editor.main"
+        "vs/editor/editor.main.js"
 
     ], function () {
 
