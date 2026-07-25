@@ -1,6 +1,7 @@
 let editor;
 
 const templates = {
+
     python: `print("Welcome to 725 Compiler Assist!")`,
 
     c: `#include <stdio.h>
@@ -10,22 +11,56 @@ int main()
     printf("Welcome to 725 Compiler Assist!");
     return 0;
 }`
+
+};
+
+
+self.MonacoEnvironment = {
+
+    getWorkerUrl: function () {
+
+        return URL.createObjectURL(
+
+            new Blob([`
+
+                self.MonacoEnvironment = {
+                    baseUrl: "https://unpkg.com/monaco-editor@0.52.2/min/"
+                };
+
+                importScripts("https://unpkg.com/monaco-editor@0.52.2/min/vs/base/worker/workerMain.js");
+
+            `], {
+
+                type: "text/javascript"
+
+            })
+
+        );
+
+    }
+
 };
 
 
 function initEditor() {
 
     require.config({
+
         paths: {
+
             vs: "https://unpkg.com/monaco-editor@0.52.2/min/vs"
+
         }
+
     });
 
 
     require(["vs/editor/editor.main"], function () {
 
         editor = monaco.editor.create(
+
             document.getElementById("editor"),
+
             {
 
                 value: templates.python,
@@ -39,7 +74,9 @@ function initEditor() {
                 fontSize: 15,
 
                 minimap: {
+
                     enabled: false
+
                 },
 
                 scrollBeyondLastLine: false,
@@ -51,6 +88,7 @@ function initEditor() {
                 tabSize: 4
 
             }
+
         );
 
 
@@ -58,12 +96,11 @@ function initEditor() {
 
             if (window.analyzeLiveCode) {
 
-                analyzeLiveCode();
+                window.analyzeLiveCode();
 
             }
 
         });
-
 
     });
 
@@ -74,15 +111,18 @@ function changeLanguage(language) {
 
     if (!editor) return;
 
-
     monaco.editor.setModelLanguage(
+
         editor.getModel(),
+
         language
+
     );
 
-
     editor.setValue(
+
         templates[language]
+
     );
 
 }
