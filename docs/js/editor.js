@@ -14,6 +14,12 @@ int main()
 
 };
 
+self.MonacoEnvironment = {
+    getWorkerUrl: function () {
+        return "monaco/vs/base/worker/workerMain.js";
+    }
+};
+
 
 function initEditor() {
 
