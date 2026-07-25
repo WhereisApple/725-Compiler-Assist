@@ -18,7 +18,7 @@ self.MonacoEnvironment = {
 
 const languageMap = {
     python: "python",
-    c: "cpp"          // Monaco uses "cpp" for C/C++
+    c: "cpp"
 };
 
 function initEditor() {
@@ -28,7 +28,10 @@ function initEditor() {
         }
     });
 
-    require(["vs/editor/editor.main"], function () {
+    require([
+        "vs/editor/editor.main",
+        "vs/basic-languages/loader"
+    ], function () {
         editor = monaco.editor.create(document.getElementById("editor"), {
             value: templates.python,
             language: languageMap.python,
