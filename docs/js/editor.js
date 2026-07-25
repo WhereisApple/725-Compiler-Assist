@@ -1,5 +1,6 @@
 let editor;
 
+
 const templates = {
 
     python: `print("Welcome to 725 Compiler Assist!")`,
@@ -15,6 +16,7 @@ int main()
 };
 
 
+
 // Monaco worker configuration
 self.MonacoEnvironment = {
 
@@ -27,6 +29,7 @@ self.MonacoEnvironment = {
 };
 
 
+
 // Monaco language mapping
 const languageMap = {
 
@@ -35,6 +38,8 @@ const languageMap = {
     c: "cpp"
 
 };
+
+
 
 
 
@@ -57,24 +62,11 @@ function initEditor() {
 
         "vs/editor/editor.main",
 
-        "vs/basic-languages/loader"
+        "vs/basic-languages/python/python",
+
+        "vs/basic-languages/cpp/cpp"
 
     ], function () {
-
-
-
-        // Load Python language support
-        require([
-            "vs/basic-languages/python/python"
-        ], function () { });
-
-
-
-        // Load C/C++ language support
-        require([
-            "vs/basic-languages/cpp/cpp"
-        ], function () { });
-
 
 
 
@@ -84,15 +76,21 @@ function initEditor() {
 
             {
 
+
                 value: templates.python,
+
 
                 language: languageMap.python,
 
+
                 theme: "vs-dark",
+
 
                 automaticLayout: true,
 
+
                 fontSize: 15,
+
 
                 minimap: {
 
@@ -100,17 +98,23 @@ function initEditor() {
 
                 },
 
+
                 scrollBeyondLastLine: false,
+
 
                 roundedSelection: true,
 
+
                 wordWrap: "on",
 
+
                 tabSize: 4
+
 
             }
 
         );
+
 
 
 
@@ -132,6 +136,8 @@ function initEditor() {
 
 
 }
+
+
 
 
 
@@ -191,6 +197,8 @@ function changeLanguage(language) {
 
 
 
+
+
 function getCode() {
 
 
@@ -201,6 +209,8 @@ function getCode() {
 
 
 }
+
+
 
 
 
